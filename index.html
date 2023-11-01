@@ -2,687 +2,577 @@
 <html lang="pt-br">
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-    <meta charset="utf-8" />
-    <!-- Criado Por Matheus Grion (21) 9 8459-5208) -->
-    <title>SR 2023</title>
-
-
-    <!-- Estilos gerais da página -->
-    <style type="text/css">
-        body {
-          font-family: Roboto, sans-serif;
-          text-align: center;
-          background: linear-gradient(to bottom, blue, red);
-          background-attachment: fixed;
-          background-size: 100% 100%;
-          margin: 0;
-          padding: 0;
-        }
-    </style>
-
-    <!-- Estilos da tabela -->
-    <style type="text/css">
-        table {
-          margin: 4cm auto 0;
-          border-collapse: collapse;
-          width: 80%;
-        }
-        
-        th, td {
-          border: 1px solid #ccc;
-          padding: 8px;
-          text-align: center;
-        }
-        
-        th {
-          background-color: #f2f2f2;
-        }
-        
-        .cabecalho {
-          background-color: #92f61a;
-        }
-    </style>
-
-    <!-- Estilos para a tabela com fundo -->
-    <style type="text/css">
-        .tabela-com-fundo {
-          background-color: #292d33;
-        }
-    </style>
-
-    <!-- Estilos para colunas específicas da tabela -->
-    <style type="text/css">
-        .setor, .modelo, .etiqueta, .obs {
-          font-family: Century Gothic, CenturyGothic, AppleGothic, Roboto, sans-serif;
-          color: white;
-          font-weight: normal;
-          font-size: 16px;
-        }
-    </style>
-
-    <!-- Estilos para botões e links -->
-    <style type="text/css">
-        .btn {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          position: fixed;
-          bottom: 330px;
-          right: 20px;
-          width: 60px;
-          height: 50px;
-          background-color: #000;
-          text-decoration: none;
-          color: aliceblue;
-          font-size: 18px;
-          font-weight: bold;
-          cursor: pointer;
-          transition: margin-top 250ms;
-        }
-        
-        .btn:hover {
-          margin-top: -8px;
-        }
-        
-        .button, .button:hover {
-          display: inline-block;
-          border-radius: 4px;
-          text-align: center;
-          font-size: 16px;
-          padding: 5px;
-          width: 180px;
-          cursor: pointer;
-          margin: 5px;
-        }
-        
-        .button {
-          background-color: #92f61a;
-          color: #000;
-          font-weight: bold;
-          border: none;
-          transition: all 0.5s;
-        }
-        
-        .button:hover {
-          background-color: blue;
-          color: white;
-          font-weight: bold;
-        }
-        
-        .button span {
-          cursor: pointer;
-          display: inline-block;
-          position: relative;
-          transition: 0.5s;
-        }
-        
-        .button span:after {
-          content: "\00bb";
-          position: absolute;
-          opacity: 0;
-          top: 0;
-          right: -20px;
-          transition: 0.5s;
-        }
-        
-        .button:hover span {
-          padding-right: 25px;
-        }
-        
-        .button:hover span:after {
-          opacity: 1;
-          right: 0;
-        }
-    </style>
-
-    <!-- Estilos para a classe "titulo-impressoras" -->
-    <style type="text/css">
-        .titulo-impressoras {
-          font-family: Consolas, monaco, monospace;
-          text-align: center;
-          color: white;
-          font-weight: bold;
-          font-size: 18px;
-          transform: translateY(20px);
-        }
-    </style>
-
-    <!-- Estilos para o elemento "container" e "search" -->
-    <style type="text/css">
-        .container {
-          position: absolute;
-          margin: auto;
-          top: 20;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          width: 300px;
-          height: 100px;
-          transform: translateY(-480px);
-        }
-        
-        .container .search {
-          position: absolute;
-          margin: auto;
-          top: 0;
-          right: 0;
-          bottom: 0;
-          left: 0;
-          width: 80px;
-          height: 80px;
-          background: crimson;
-          border-radius: 50%;
-          transition: all 1s;
-          z-index: 4;
-          box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.4);
-        }
-        
-        .container .search:hover {
-          cursor: pointer;
-        }
-    </style>
-
-    <!-- Estilos para o ícone de pesquisa -->
-    <style type="text/css">
-        .container .search::before {
-          content: "";
-          position: absolute;
-          margin: auto;
-          top: 22px;
-          right: 0;
-          bottom: 0;
-          left: 22px;
-          width: 12px;
-          height: 2px;
-          background: white;
-          transform: rotate(45deg);
-          transition: all 0.5s;
-        }
-        
-        .container .search::after {
-          content: "";
-          position: absolute;
-          margin: auto;
-          top: -5px;
-          right: 0;
-          bottom: 0;
-          left: -5px;
-          width: 25px;
-          height: 25px;
-          border-radius: 50%;
-          border: 2px solid white;
-          transition: all 0.5s;
-        }
-        
-
-
- /* Estilos para o elemento .container input */
- .container input {
-     font-family: Roboto, sans-serif;
-     position: absolute;
-     margin: auto;
-     top: 0;
-     right: 0;
-     bottom: 0;
-     left: 0;
-     width: 30px;
-     height: 50px;
-     outline: none;
-     border: none;
-     background: crimson;
-     color: white;
-     text-shadow: 0 0 10px crimson;
-     padding: 0 0px 0 10px;    /* Texto dentro da barra de pesquisa */
-     border-radius: 30px;
-     box-shadow: 0 0 25px 0 crimson, 0 20px 25px 0 rgba(0, 0, 0, 0.2);
-     transition: all 1s;
-     opacity: 0;
-     z-index: 5;
-     font-weight: bolder;
-     letter-spacing: 0.1em;
- }
-
-    </style>
-
-    <!-- Estilos para a entrada de texto -->
-    <style type="text/css">
-        .container input:hover {
-          cursor: pointer;
-        }
-        
-        .container input:focus {
-          width: 300px;
-          opacity: 1;
-          cursor: text;
-        }
-        
-        .container input:focus ~ .search {
-          right: -250px;
-          background: #151515;
-          z-index: 6;
-        }
-        
-        .container input:focus ~ .search::before {
-          top: 0;
-          left: 0;
-          width: 25px;
-        }
-        
-        .container input:focus ~ .search::after {
-          top: 0;
-          left: 0;
-          width: 25px;
-          height: 2px;
-          border: none;
-          background: white;
-          border-radius: 0%;
-          transform: rotate(-45deg);
-        }
-        
-        /* Estilos para a barra de pesquisa */
-        
-        	.container input::placeholder {
-          color: white;
-          opacity: 0.5;
-          font-weight: bolder;
-		  transform: translateY(0px);
-		  transform: translatex(0px);
-        }
-    </style>
-
-
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+	<meta charset="utf-8" />
+	<!-- Criado Por Matheus Grion (21) 9 8459-5208) -->
+	<title>SR 2023</title>
+	<!-- Estilos gerais da página -->
+	<style type="text/css">
+		body {
+		  font-family: Roboto, sans-serif;
+		  text-align: center;
+		  background: linear-gradient(to bottom, blue, red);
+		  background-attachment: fixed;
+		  background-size: 100% 100%;
+		  margin: 0;
+		  padding: 0;
+		}
+	</style>
+	<!-- Estilos da tabela -->
+	<style type="text/css">
+		table {
+		  margin: 4cm auto 0;
+		  border-collapse: collapse;
+		  width: 80%;
+		}
+		
+		th, td {
+		  border: 1px solid #ccc;
+		  padding: 8px;
+		  text-align: center;
+		}
+		
+		th {
+		  background-color: #f2f2f2;
+		}
+		
+		.cabecalho {
+		  background-color: #92f61a;
+		}
+	</style>
+	<!-- Estilos para a tabela com fundo -->
+	<style type="text/css">
+		.tabela-com-fundo {
+		  background-color: #292d33;
+		}
+	</style>
+	<!-- Estilos para colunas específicas da tabela -->
+	<style type="text/css">
+		.setor, .modelo, .etiqueta, .obs {
+		  font-family: Century Gothic, CenturyGothic, AppleGothic, Roboto, sans-serif;
+		  color: white;
+		  font-weight: normal;
+		  font-size: 16px;
+		}
+		
+		thead th { /* Deixa o cabeçalho da tabela fixo na tela */
+		  position: sticky;
+		  top: 0;
+		}
+		
+		.cabecalho {
+		  z-index: 1000;
+		}
+	</style>
+	<!-- Estilos para botões e links -->
+	<style type="text/css">
+		.btn {
+		  display: flex;
+		  justify-content: center;
+		  align-items: center;
+		  position: fixed;
+		  bottom: 330px;
+		  right: 20px;
+		  width: 60px;
+		  height: 50px;
+		  background-color: #000;
+		  text-decoration: none;
+		  color: aliceblue;
+		  font-size: 18px;
+		  font-weight: bold;
+		  cursor: pointer;
+		  transition: margin-top 250ms;
+		}
+		
+		.btn:hover {
+		  margin-top: -8px;
+		}
+		
+		.button, .button:hover {
+		  display: inline-block;
+		  border-radius: 4px;
+		  text-align: center;
+		  font-size: 16px;
+		  padding: 5px;
+		  width: 180px;
+		  cursor: pointer;
+		  margin: 5px;
+		}
+		
+		.button {
+		  background-color: #92f61a;
+		  color: #000;
+		  font-weight: bold;
+		  border: none;
+		  transition: all 0.5s;
+		}
+		
+		.button:hover {
+		  background-color: blue;
+		  color: white;
+		  font-weight: bold;
+		}
+		
+		.button span {
+		  cursor: pointer;
+		  display: inline-block;
+		  position: relative;
+		  transition: 0.5s;
+		}
+		
+		.button span:after {
+		  content: "\00bb";
+		  position: absolute;
+		  opacity: 0;
+		  top: 0;
+		  right: -20px;
+		  transition: 0.5s;
+		}
+		
+		.button:hover span {
+		  padding-right: 25px;
+		}
+		
+		.button:hover span:after {
+		  opacity: 1;
+		  right: 0;
+		}
+	</style>
+	<!-- Estilos para a classe "titulo-impressoras" -->
+	<style type="text/css">
+		.titulo-impressoras {
+		  font-family: Consolas, monaco, monospace;
+		  text-align: center;
+		  color: white;
+		  font-weight: bold;
+		  font-size: 18px;
+		  transform: translateY(20px);
+		}
+	</style>
+	<!-- Estilos para o elemento "container" e "search" -->
+	<style type="text/css">
+		.container {
+		  position: absolute;
+		  margin: auto;
+		  top: 20;
+		  left: 0;
+		  right: 0;
+		  bottom: 0;
+		  width: 300px;
+		  height: 100px;
+		  transform: translateY(-480px);
+		}
+		
+		.container .search {
+		  position: absolute;
+		  margin: auto;
+		  top: 0;
+		  right: 0;
+		  bottom: 0;
+		  left: 0;
+		  width: 80px;
+		  height: 80px;
+		  background: crimson;
+		  border-radius: 50%;
+		  transition: all 1s;
+		  z-index: 4;
+		  box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.4);
+		}
+		
+		.container .search:hover {
+		  cursor: pointer;
+		}
+	</style>
+	<!-- Estilos para o ícone de pesquisa -->
+	<style type="text/css">
+		.container .search::before {
+		  content: "";
+		  position: absolute;
+		  margin: auto;
+		  top: 22px;
+		  right: 0;
+		  bottom: 0;
+		  left: 22px;
+		  width: 12px;
+		  height: 2px;
+		  background: white;
+		  transform: rotate(45deg);
+		  transition: all 0.5s;
+		}
+		
+		.container .search::after {
+		  content: "";
+		  position: absolute;
+		  margin: auto;
+		  top: -5px;
+		  right: 0;
+		  bottom: 0;
+		  left: -5px;
+		  width: 25px;
+		  height: 25px;
+		  border-radius: 50%;
+		  border: 2px solid white;
+		  transition: all 0.5s;
+		}
+		
+		
+		
+		 /* Estilos para o elemento .container input */
+		 .container input {
+		     font-family: Roboto, sans-serif;
+		     position: absolute;
+		     margin: auto;
+		     top: 0;
+		     right: 0;
+		     bottom: 0;
+		     left: 0;
+		     width: 30px;
+		     height: 50px;
+		     outline: none;
+		     border: none;
+		     background: crimson;
+		     color: white;
+		     text-shadow: 0 0 10px crimson;
+		     padding: 0 0px 0 10px;    /* Texto dentro da barra de pesquisa */
+		     border-radius: 30px;
+		     box-shadow: 0 0 25px 0 crimson, 0 20px 25px 0 rgba(0, 0, 0, 0.2);
+		     transition: all 1s;
+		     opacity: 0;
+		     z-index: 5;
+		     font-weight: bolder;
+		     letter-spacing: 0.1em;
+		 }
+		
+	</style>
+	<!-- Estilos para a entrada de texto -->
+	<style type="text/css">
+		.container input:hover {
+		  cursor: pointer;
+		}
+		
+		.container input:focus {
+		  width: 300px;
+		  opacity: 1;
+		  cursor: text;
+		}
+		
+		.container input:focus ~ .search {
+		  right: -250px;
+		  background: #151515;
+		  z-index: 6;
+		}
+		
+		.container input:focus ~ .search::before {
+		  top: 0;
+		  left: 0;
+		  width: 25px;
+		}
+		
+		.container input:focus ~ .search::after {
+		  top: 0;
+		  left: 0;
+		  width: 25px;
+		  height: 2px;
+		  border: none;
+		  background: white;
+		  border-radius: 0%;
+		  transform: rotate(-45deg);
+		}
+		
+		/* Estilos para a barra de pesquisa */
+		
+			.container input::placeholder {
+		  color: white;
+		  opacity: 0.5;
+		  font-weight: bolder;
+				  transform: translateY(0px);
+				  transform: translatex(0px);
+		}
+	</style>
 </head>
 
 <body translate="no">
-
-    <h1 class="titulo-impressoras">Search RED 2023</h1>
-
-    <!-- barra de pesquisa -->
-    <div class="container">
-        <input type="text" id="search" placeholder="Pesquisar Impressoras">
-        <div class="search"></div>
-    </div>
-
-
-    <!-- Tabela de Dados -->
-    <table class="tabela-com-fundo">
-        <thead>
-            <tr>
-                <th class="cabecalho">Setor</th>
-                <th class="cabecalho">Endereço de IP</th>
-                <th class="cabecalho">Modelo</th>
-                <th class="cabecalho">Etiqueta</th>
-                <th class="cabecalho">Observação</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Seus dados da tabela -->
-            <tr>
-                <td class="setor">Setor @</td>
-                <td class="ip">
-                    <a href="http://192.168.1.100" target="_blank">
-                        <button class="button"><span>192.168.1.100</span></button>
-                    </a>
-                </td>
-                <td class="modelo">Índia - Fòx - Limã - Bravô - </td>
-                <td class="etiqueta">IMP_Local_Setor1</td>
-                <td class="obs">Boa</td>
-            </tr>
-		 <td class="setor">Teste Espaço da TáBêLã %</td>
-                <td class="ip">
-                    <a href="http://192.168.1.100" target="_blank">
-                        <button class="button"><span>192.168.1.100</span></button>
-                    </a>
-                </td>
-                <td class="modelo">Índia - Fòx - Limã - Bravô - Whisky</td>
-                <td class="etiqueta">IMP_Local_Setor1_2023</td>
-                <td class="obs">Aguardando Reparo</td>
-            </tr>
-            <tr>
-                <td class="setor">Setor Y</td>
-                <td class="ip">
-                    <a href="http://192.168.1.101" target="_blank">
-                        <button class="button"><span>192.168.1.101</span></button>
-                    </a>
-                </td>
-                <td class="modelo">Impressora Laser Mono</td>
-                <td class="etiqueta">IMP_Local_Setor2</td>
-                <td class="obs">Ruim</td>
-            </tr>
-            <tr>
-                <td class="setor">Setor Z</td>
-                <td class="ip">
-                    <a href="http://192.168.1.102" target="_blank">
-                        <button class="button"><span>192.168.1.102</span></button>
-                    </a>
-                </td>
-                <td class="modelo">Impressora Térmica</td>
-                <td class="etiqueta">IMP_Local_Setor3</td>
-                <td class="obs">Backup</td>
-            </tr>
-            <tr>
-                <td class="setor">Setor X</td>
-                <td class="ip">
-                    <a href="http://192.168.1.100" target="_blank">
-                        <button class="button"><span>192.168.1.100</span></button>
-                    </a>
-                </td>
-                <td class="modelo">Índia - Fòx - Limã - Bravô - </td>
-                <td class="etiqueta">IMP_Local_Setor1</td>
-                <td class="obs">Boa</td>
-            </tr>
-            <tr>
-                <td class="setor">Setor Y</td>
-                <td class="ip">
-                    <a href="http://192.168.1.101" target="_blank">
-                        <button class="button"><span>192.168.1.101</span></button>
-                    </a>
-                </td>
-                <td class="modelo">Impressora Laser Mono</td>
-                <td class="etiqueta">IMP_Local_Setor2</td>
-                <td class="obs">Ruim</td>
-            </tr>
-            <tr>
-                <td class="setor">Setor Z</td>
-                <td class="ip">
-                    <a href="http://192.168.1.102" target="_blank">
-                        <button class="button"><span>192.168.1.102</span></button>
-                    </a>
-                </td>
-                <td class="modelo">Impressora Térmica</td>
-                <td class="etiqueta">IMP_Local_Setor3</td>
-                <td class="obs">Backup</td>
-            </tr>
-            <tr>
-                <td class="setor">Setor X</td>
-                <td class="ip">
-                    <a href="http://192.168.1.100" target="_blank">
-                        <button class="button"><span>192.168.1.100</span></button>
-                    </a>
-                </td>
-                <td class="modelo">Índia - Fòx - Limã - Bravô - </td>
-                <td class="etiqueta">IMP_Local_Setor1</td>
-                <td class="obs">Boa</td>
-            </tr>
-            <tr>
-                <td class="setor">Setor Y</td>
-                <td class="ip">
-                    <a href="http://192.168.1.101" target="_blank">
-                        <button class="button"><span>192.168.1.101</span></button>
-                    </a>
-                </td>
-                <td class="modelo">Impressora Laser Mono</td>
-                <td class="etiqueta">IMP_Local_Setor2</td>
-                <td class="obs">Ruim</td>
-            </tr>
-            <tr>
-                <td class="setor">Setor Z</td>
-                <td class="ip">
-                    <a href="http://192.168.1.102" target="_blank">
-                        <button class="button"><span>192.168.1.102</span></button>
-                    </a>
-                </td>
-                <td class="modelo">Impressora Térmica</td>
-                <td class="etiqueta">IMP_Local_Setor3</td>
-                <td class="obs">Backup</td>
-            </tr>
-            <tr>
-                <td class="setor">Setor X</td>
-                <td class="ip">
-                    <a href="http://192.168.1.100" target="_blank">
-                        <button class="button"><span>192.168.1.100</span></button>
-                    </a>
-                </td>
-                <td class="modelo">Índia - Fòx - Limã - Bravô - </td>
-                <td class="etiqueta">IMP_Local_Setor1</td>
-                <td class="obs">Boa</td>
-            </tr>
-            <tr>
-                <td class="setor">Setor Y</td>
-                <td class="ip">
-                    <a href="http://192.168.1.101" target="_blank">
-                        <button class="button"><span>192.168.1.101</span></button>
-                    </a>
-                </td>
-                <td class="modelo">Impressora Laser Mono</td>
-                <td class="etiqueta">IMP_Local_Setor2</td>
-                <td class="obs">Ruim</td>
-            </tr>
-            <tr>
-                <td class="setor">Setor Z</td>
-                <td class="ip">
-                    <a href="http://192.168.1.102" target="_blank">
-                        <button class="button"><span>192.168.1.102</span></button>
-                    </a>
-                </td>
-                <td class="modelo">Impressora Térmica</td>
-                <td class="etiqueta">IMP_Local_Setor3</td>
-                <td class="obs">Backup</td>
-            </tr>
-            <tr>
-                <td class="setor">Setor X</td>
-                <td class="ip">
-                    <a href="http://192.168.1.100" target="_blank">
-                        <button class="button"><span>192.168.1.100</span></button>
-                    </a>
-                </td>
-                <td class="modelo">Índia - Fòx - Limã - Bravô - </td>
-                <td class="etiqueta">IMP_Local_Setor1</td>
-                <td class="obs">Boa</td>
-            </tr>
-            <tr>
-                <td class="setor">Setor Y</td>
-                <td class="ip">
-                    <a href="http://192.168.1.101" target="_blank">
-                        <button class="button"><span>192.168.1.101</span></button>
-                    </a>
-                </td>
-                <td class="modelo">Impressora Laser Mono</td>
-                <td class="etiqueta">IMP_Local_Setor2</td>
-                <td class="obs">Ruim</td>
-            </tr>
-            <tr>
-                <td class="setor">Setor Z</td>
-                <td class="ip">
-                    <a href="http://192.168.1.102" target="_blank">
-                        <button class="button"><span>192.168.1.102</span></button>
-                    </a>
-                </td>
-                <td class="modelo">Impressora Térmica</td>
-                <td class="etiqueta">IMP_Local_Setor3</td>
-                <td class="obs">Backup</td>
-            </tr>
-            <tr>
-                <td class="setor">Setor Y</td>
-                <td class="ip">
-                    <a href="http://192.168.1.101" target="_blank">
-                        <button class="button"><span>192.168.1.101</span></button>
-                    </a>
-                </td>
-                <td class="modelo">Impressora Laser Mono</td>
-                <td class="etiqueta">IMP_Local_Setor2</td>
-                <td class="obs">Ruim</td>
-            </tr>
-            <tr>
-                <td class="setor">Setor Z</td>
-                <td class="ip">
-                    <a href="http://192.168.1.102" target="_blank">
-                        <button class="button"><span>192.168.1.102</span></button>
-                    </a>
-                </td>
-                <td class="modelo">Impressora Térmica</td>
-                <td class="etiqueta">IMP_Local_Setor3</td>
-                <td class="obs">Backup</td>
-            </tr>
-            <tr>
-                <td class="setor">Setor X</td>
-                <td class="ip">
-                    <a href="http://192.168.1.100" target="_blank">
-                        <button class="button"><span>192.168.1.100</span></button>
-                    </a>
-                </td>
-                <td class="modelo">Índia - Fòx - Limã - Bravô - </td>
-                <td class="etiqueta">IMP_Local_Setor1</td>
-                <td class="obs">Boa</td>
-            </tr>
-            <tr>
-                <td class="setor">Setor Y</td>
-                <td class="ip">
-                    <a href="http://192.168.1.101" target="_blank">
-                        <button class="button"><span>192.168.1.101</span></button>
-                    </a>
-                </td>
-                <td class="modelo">Impressora Laser Mono</td>
-                <td class="etiqueta">IMP_Local_Setor2</td>
-                <td class="obs">Ruim</td>
-            </tr>
-            <tr>
-                <td class="setor">Setor Z</td>
-                <td class="ip">
-                    <a href="http://192.168.1.102" target="_blank">
-                        <button class="button"><span>192.168.1.102</span></button>
-                    </a>
-                </td>
-                <td class="modelo">Impressora Térmica</td>
-                <td class="etiqueta">IMP_Local_Setor3</td>
-                <td class="obs">Backup</td>
-            </tr>
-            <tr>
-                <td class="setor">Setor X</td>
-                <td class="ip">
-                    <a href="http://192.168.1.100" target="_blank">
-                        <button class="button"><span>192.168.1.100</span></button>
-                    </a>
-                </td>
-                <td class="modelo">Índia - Fòx - Limã - Bravô - </td>
-                <td class="etiqueta">IMP_Local_Setor1</td>
-                <td class="obs">Boa</td>
-            </tr>
-            <tr>
-                <td class="setor">Setor Y</td>
-                <td class="ip">
-                    <a href="http://192.168.1.101" target="_blank">
-                        <button class="button"><span>192.168.1.101</span></button>
-                    </a>
-                </td>
-                <td class="modelo">Impressora Laser Mono</td>
-                <td class="etiqueta">IMP_Local_Setor2</td>
-                <td class="obs">Ruim</td>
-            </tr>
-            <tr>
-                <td class="setor">Setor Z</td>
-                <td class="ip">
-                    <a href="http://192.168.1.102" target="_blank">
-                        <button class="button"><span>192.168.1.102</span></button>
-                    </a>
-                </td>
-                <td class="modelo">Impressora Térmica</td>
-                <td class="etiqueta">IMP_Local_Setor3</td>
-                <td class="obs">Backup</td>
-            </tr>
-            <tr>
-                <td class="setor">Setor X</td>
-                <td class="ip">
-                    <a href="http://192.168.1.100" target="_blank">
-                        <button class="button"><span>192.168.1.100</span></button>
-                    </a>
-                </td>
-                <td class="modelo">Índia - Fòx - Limã - Bravô - </td>
-                <td class="etiqueta">IMP_Local_Setor1</td>
-                <td class="obs">Boa</td>
-            </tr>
-            <tr>
-                <td class="setor">Setor Y</td>
-                <td class="ip">
-                    <a href="http://192.168.1.101" target="_blank">
-                        <button class="button"><span>192.168.1.101</span></button>
-                    </a>
-                </td>
-                <td class="modelo">Impressora Laser Mono</td>
-                <td class="etiqueta">IMP_Local_Setor2</td>
-                <td class="obs">Ruim</td>
-            </tr>
-            <tr>
-                <td class="setor">Setor Z</td>
-                <td class="ip">
-                    <a href="http://192.168.1.102" target="_blank">
-                        <button class="button"><span>192.168.1.102</span></button>
-                    </a>
-                </td>
-                <td class="modelo">Impressora Térmica</td>
-                <td class="etiqueta">IMP_Local_Setor3</td>
-                <td class="obs">Backup</td>
-            </tr>
-            <tr>
-                <td class="setor">Setor X</td>
-                <td class="ip">
-                    <a href="http://192.168.1.100" target="_blank">
-                        <button class="button"><span>192.168.1.100</span></button>
-                    </a>
-                </td>
-                <td class="modelo">Índia - Fòx - Limã - Bravô - </td>
-                <td class="etiqueta">IMP_Local_Setor1</td>
-                <td class="obs">Boa</td>
-            </tr>
-            <tr>
-                <td class="setor">Setor Y</td>
-                <td class="ip">
-                    <a href="http://192.168.1.101" target="_blank">
-                        <button class="button"><span>192.168.1.101</span></button>
-                    </a>
-                </td>
-                <td class="modelo">Impressora Laser Mono</td>
-                <td class="etiqueta">IMP_Local_Setor2</td>
-                <td class="obs">Ruim</td>
-            </tr>
-            <tr>
-                <td class="setor">Setor Z</td>
-                <td class="ip">
-                    <a href="http://192.168.1.102" target="_blank">
-                        <button class="button"><span>192.168.1.102</span></button>
-                    </a>
-                </td>
-                <td class="modelo">Impressora Térmica</td>
-                <td class="etiqueta">IMP_Local_Setor3</td>
-                <td class="obs">Backup</td>
-            </tr>
-
-        </tbody>
-    </table>
-
-
-    <!-- função filterTable() -->
-    <script type="text/javascript">
-        function filterTable() {
-          var input, filter, table, tr, td, i, txtValue;
-          input = document.getElementById('search');
-          filter = input.value.toLowerCase();
-          table = document.querySelector('table');
-          tr = table.querySelectorAll('tbody tr');
-          tr.forEach(function (row) {
-            td = row.getElementsByTagName('td');
-            row.style.display = 'none';
-            for (i = 0; i < td.length; i++) {
-              txtValue = td[i].textContent || td[i].innerText;
-              txtValue = txtValue.toLowerCase();
-    
-              // Verifica se o texto contém a pesquisa ou se a pesquisa é um espaço + número (ex: " 1")
-              if (txtValue.includes(filter) || txtValue.includes(' 1' + filter)) {
-                row.style.display = 'table-row';
-                break;
-              }
-            }
-          });
-        }
-    
-        // Adicionado um evento para chamar a função filterTable() ao digitar na barra de pesquisa
-        document.getElementById('search').addEventListener('input', filterTable);
-    </script>
-
-
-    <!-- Botão para rolar para o topo -->
-    <a href="#" class="btn">Topo</a>
+	<h1 class="titulo-impressoras">Search RED 2023</h1>
+	<!-- barra de pesquisa -->
+	<div class="container">
+		<input type="text" id="search" placeholder="Pesquisar Impressoras">
+		<div class="search"></div>
+	</div>
+	<!-- Tabela de Dados -->
+	<table class="tabela-com-fundo">
+		<thead>
+			<tr>
+				<th class="cabecalho">Setor</th>
+				<th class="cabecalho">Endereço de IP</th>
+				<th class="cabecalho">Modelo</th>
+				<th class="cabecalho">Etiqueta</th>
+				<th class="cabecalho">Observação</th>
+			</tr>
+		</thead>
+		<tbody>
+			<!-- Seus dados da tabela -->
+			<tr>
+				<td class="setor">Departamento de TI</td>
+				<td class="ip">
+					<a href="http://192.168.1.1" target="_blank">
+						<button class="button"><span>192.168.1.1</span></button>
+					</a>
+				</td>
+				<td class="modelo">Servidor</td>
+				<td class="etiqueta">Servidor1</td>
+				<td class="obs">Principal servidor da empresa</td>
+			</tr>
+			<tr>
+				<td class="setor">Recursos Humanos</td>
+				<td class="ip">
+					<a href="http://192.168.1.2" target="_blank">
+						<button class="button"><span>192.168.1.2</span></button>
+					</a>
+				</td>
+				<td class="modelo">Computador</td>
+				<td class="etiqueta">RH-PC01</td>
+				<td class="obs">PC do gerente de RH</td>
+			</tr>
+			<tr>
+				<td class="setor">Marketing</td>
+				<td class="ip">
+					<a href="http://192.168.1.3" target="_blank">
+						<button class="button"><span>192.168.1.3</span></button>
+					</a>
+				</td>
+				<td class="modelo">Impressora</td>
+				<td class="etiqueta">MKT-Printer</td>
+				<td class="obs">Impressora de marketing</td>
+			</tr>
+			<tr>
+				<td class="setor">Vendas</td>
+				<td class="ip">
+					<a href="http://192.168.1.4" target="_blank">
+						<button class="button"><span>192.168.1.4</span></button>
+					</a>
+				</td>
+				<td class="modelo">Laptop</td>
+				<td class="etiqueta">Vendas-Laptop1</td>
+				<td class="obs">Laptop do representante de vendas</td>
+			</tr>
+			<tr>
+				<td class="setor">Financeiro</td>
+				<td class="ip">
+					<a href="http://192.168.1.5" target="_blank">
+						<button class="button"><span>192.168.1.5</span></button>
+					</a>
+				</td>
+				<td class="modelo">Impressora</td>
+				<td class="etiqueta">Fin-Printer</td>
+				<td class="obs">Impressora do departamento financeiro</td>
+			</tr>
+			<tr>
+				<td class="setor">Produção</td>
+				<td class="ip">
+					<a href="http://192.168.1.6" target="_blank">
+						<button class="button"><span>192.168.1.6</span></button>
+					</a>
+				</td>
+				<td class="modelo">Máquina CNC</td>
+				<td class="etiqueta">CNC-001</td>
+				<td class="obs">Máquina de usinagem CNC</td>
+			</tr>
+			<tr>
+				<td class="setor">Suporte Técnico</td>
+				<td class="ip">
+					<a href="http://192.168.1.7" target="_blank">
+						<button class="button"><span>192.168.1.7</span></button>
+					</a>
+				</td>
+				<td class="modelo">Desktop</td>
+				<td class="etiqueta">Suporte-PC01</td>
+				<td class="obs">Estação de trabalho do suporte técnico</td>
+			</tr>
+			<tr>
+				<td class="setor">Recursos Humanos</td>
+				<td class="ip">
+					<a href="http://192.168.1.8" target="_blank">
+						<button class="button"><span>192.168.1.8</span></button>
+					</a>
+				</td>
+				<td class="modelo">Laptop</td>
+				<td class="etiqueta">RH-Laptop2</td>
+				<td class="obs">Laptop de RH para treinamento</td>
+			</tr>
+			<tr>
+				<td class="setor">Marketing</td>
+				<td class="ip">
+					<a href="http://192.168.1.9" target="_blank">
+						<button class="button"><span>192.168.1.9</span></button>
+					</a>
+				</td>
+				<td class="modelo">Impressora</td>
+				<td class="etiqueta">MKT-Printer2</td>
+				<td class="obs">Impressora adicional de marketing</td>
+			</tr>
+			<tr>
+				<td class="setor">Vendas</td>
+				<td class="ip">
+					<a href="http://192.168.1.10" target="_blank">
+						<button class="button"><span>192.168.1.10</span></button>
+					</a>
+				</td>
+				<td class="modelo">Desktop</td>
+				<td class="etiqueta">Vendas-PC2</td>
+				<td class="obs">Estação de trabalho de vendas</td>
+			</tr>
+			<tr>
+				<td class="setor">Financeiro</td>
+				<td class="ip">
+					<a href="http://192.168.1.11" target="_blank">
+						<button class="button"><span>192.168.1.11</span></button>
+					</a>
+				</td>
+				<td class="modelo">Laptop</td>
+				<td class="etiqueta">Fin-Laptop2</td>
+				<td class="obs">Laptop adicional do departamento financeiro</td>
+			</tr>
+			<tr>
+				<td class="setor">Produção</td>
+				<td class="ip">
+					<a href="http://192.168.1.12" target="_blank">
+						<button class="button"><span>192.168.1.12</span></button>
+					</a>
+				</td>
+				<td class="modelo">Impressora</td>
+				<td class="etiqueta">Prod-Printer</td>
+				<td class="obs">Impressora na linha de produção</td>
+			</tr>
+			<tr>
+				<td class="setor">Suporte Técnico</td>
+				<td class="ip">
+					<a href="http://192.168.1.13" target="_blank">
+						<button class="button"><span>192.168.1.13</span></button>
+					</a>
+				</td>
+				<td class="modelo">Desktop</td>
+				<td class="etiqueta">Suporte-PC02</td>
+				<td class="obs">Segunda estação de trabalho do suporte técnico</td>
+			</tr>
+			<tr>
+				<td class="setor">Recursos Humanos</td>
+				<td class="ip">
+					<a href="http://192.168.1.14" target="_blank">
+						<button class="button"><span>192.168.1.14</span></button>
+					</a>
+				</td>
+				<td class="modelo">Impressora</td>
+				<td class="etiqueta">RH-Printer</td>
+				<td class="obs">Impressora no departamento de RH</td>
+			</tr>
+			<tr>
+				<td class="setor">Marketing</td>
+				<td class="ip">
+					<a href="http://192.168.1.15" target="_blank">
+						<button class="button"><span>192.168.1.15</span></button>
+					</a>
+				</td>
+				<td class="modelo">Laptop</td>
+				<td class="etiqueta">MKT-Laptop1</td>
+				<td class="obs">Laptop de marketing para apresentações</td>
+			</tr>
+			<tr>
+				<td class="setor">Vendas</td>
+				<td class="ip">
+					<a href="http://192.168.1.16" target="_blank">
+						<button class="button"><span>192.168.1.16</span></button>
+					</a>
+				</td>
+				<td class="modelo">Impressora</td>
+				<td class="etiqueta">Vendas-Printer</td>
+				<td class="obs">Impressora do departamento de vendas</td>
+			</tr>
+			<tr>
+				<td class="setor">Financeiro</td>
+				<td class="ip">
+					<a href="http://192.168.1.17" target="_blank">
+						<button class="button"><span>192.168.1.17</span></button>
+					</a>
+				</td>
+				<td class="modelo">Desktop</td>
+				<td class="etiqueta">Fin-PC3</td>
+				<td class="obs">Terceira estação de trabalho do departamento financeiro</td>
+			</tr>
+			<tr>
+				<td class="setor">Produção</td>
+				<td class="ip">
+					<a href="http://192.168.1.18" target="_blank">
+						<button class="button"><span>192.168.1.18</span></button>
+					</a>
+				</td>
+				<td class="modelo">Máquina de Embalagem</td>
+				<td class="etiqueta">Embaladora-001</td>
+				<td class="obs">Máquina de embalagem na linha de produção</td>
+			</tr>
+			<tr>
+				<td class="setor">Suporte Técnico</td>
+				<td class="ip">
+					<a href="http://192.168.1.19" target="_blank">
+						<button class="button"><span>192.168.1.19</span></button>
+					</a>
+				</td>
+				<td class="modelo">Impressora</td>
+				<td class="etiqueta">Suporte-Printer</td>
+				<td class="obs">Impressora do suporte técnico</td>
+			</tr>
+			<tr>
+				<td class="setor">Recursos Humanos</td>
+				<td class="ip">
+					<a href="http://192.168.1.20" target="_blank">
+						<button class="button"><span>192.168.1.20</span></button>
+					</a>
+				</td>
+				<td class="modelo">Laptop</td>
+				<td class="etiqueta">RH-Laptop3</td>
+				<td class="obs">Terceiro laptop do departamento de RH</td>
+			</tr>
+			<tr>
+				<td class="setor">Marketing</td>
+				<td class="ip">
+					<a href="http://192.168.1.21" target="_blank">
+						<button class="button"><span>192.168.1.21</span></button>
+					</a>
+				</td>
+				<td class="modelo">Desktop</td>
+				<td class="etiqueta">MKT-PC2</td>
+				<td class="obs">Estação de trabalho de marketing</td>
+			</tr>
+		</tbody>
+	</table>
+	<!-- função filterTable() -->
+	<script type="text/javascript">
+		function filterTable() {
+		  var input, filter, table, tr, td, i, txtValue;
+		  input = document.getElementById('search');
+		  filter = input.value.toLowerCase();
+		  table = document.querySelector('table');
+		  tr = table.querySelectorAll('tbody tr');
+		  tr.forEach(function (row) {
+		    td = row.getElementsByTagName('td');
+		    row.style.display = 'none';
+		    for (i = 0; i < td.length; i++) {
+		      txtValue = td[i].textContent || td[i].innerText;
+		      txtValue = txtValue.toLowerCase();
+		    
+		      // Verifica se o texto contém a pesquisa ou se a pesquisa é um espaço + número (ex: " 1")
+		      if (txtValue.includes(filter) || txtValue.includes(' 1' + filter)) {
+		        row.style.display = 'table-row';
+		        break;
+		      }
+		    }
+		  });
+		}
+		    
+		// Adicionado um evento para chamar a função filterTable() ao digitar na barra de pesquisa
+		document.getElementById('search').addEventListener('input', filterTable);
+	</script>
+	<!-- Botão para rolar para o topo -->
+	<a href="#" class="btn">Topo</a>
 </body>
 
 </html>
